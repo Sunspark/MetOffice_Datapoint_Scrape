@@ -1,3 +1,5 @@
 secret.py
 *.pyc
 ./__pycache__/*
+incoming_locations.csv
+incoming_observations.csv
