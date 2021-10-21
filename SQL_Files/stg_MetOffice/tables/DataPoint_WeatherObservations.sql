@@ -15,7 +15,6 @@ CREATE TABLE stg_MetOffice.DataPoint_WeatherObservations (
   , [LocationID] INT -- PK component
   , [ObservationDate] DATE
   , [$] INT
-  , [ObservationTime] TIME
   , [DateKey] INT -- PK component, FK to ref.Date
   , [TimeKey] INT -- PK component, FK to ref.Time
   , [HashDiff] CHAR(32) NOT NULL
