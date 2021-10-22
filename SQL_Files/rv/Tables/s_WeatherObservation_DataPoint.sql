@@ -1,4 +1,4 @@
-CREATE TABLE s_WeatherObservation_DataPoint (
+CREATE TABLE rv.s_WeatherObservation_DataPoint (
     WeatherObservationHashKey CHAR(32) NOT NULL
   , LoadDate DATETIME2 NOT NULL
   , RecordSource VARCHAR(500) NOT NULL
@@ -15,4 +15,10 @@ CREATE TABLE s_WeatherObservation_DataPoint (
   , [H] NUMERIC(10,2)
   , [ObservationDate] DATE
   , [$] INT
+
+  , CONSTRAINT [PK_s_WeatherObservation_DataPoint] PRIMARY KEY NONCLUSTERED
+  (
+    WeatherObservationHashKey ASC
+    , LoadDate ASC
+  )  
 );

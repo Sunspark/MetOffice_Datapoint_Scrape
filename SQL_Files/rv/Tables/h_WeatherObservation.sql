@@ -1,4 +1,4 @@
-CREATE TABLE h_WeatherObservation (
+CREATE TABLE rv.h_WeatherObservation (
   WeatherObservationHashKey CHAR(32) NOT NULL
   , WeatherObservatoryLocationHashKey CHAR(32) NOT NULL
   , LoadDate DATETIME2 NOT NULL
@@ -6,4 +6,15 @@ CREATE TABLE h_WeatherObservation (
   , LocationID INT NOT NULL
   , DateKey INT NOT NULL
   , TimeKey INT NOT NULL
+
+  , CONSTRAINT [PK_h_WeatherObservation] PRIMARY KEY NONCLUSTERED
+  (
+    WeatherObservationHashKey ASC
+  )
+  , CONSTRAINT [UK_h_WeatherObservation] UNIQUE NONCLUSTERED
+  (
+      LocationID
+    , DateKey
+    , TimeKey
+  )
 );

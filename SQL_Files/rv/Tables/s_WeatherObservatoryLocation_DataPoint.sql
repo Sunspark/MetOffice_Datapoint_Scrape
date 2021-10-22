@@ -1,4 +1,4 @@
-CREATE TABLE s_WeatherObservatoryLocation_DataPoint (
+CREATE TABLE rv.s_WeatherObservatoryLocation_DataPoint (
     WeatherObservatoryLocationHashKey CHAR(32) NOT NULL
   , LoadDate DATETIME2 NOT NULL
   , RecordSource VARCHAR(500) NOT NULL
@@ -9,4 +9,10 @@ CREATE TABLE s_WeatherObservatoryLocation_DataPoint (
   , [country] NVARCHAR(300)
   , [continent] NVARCHAR(300)
   , [elevation] NUMERIC(10,5)
+
+  , CONSTRAINT [PK_s_WeatherObservatoryLocation_DataPoint] PRIMARY KEY NONCLUSTERED
+  (
+    WeatherObservatoryLocationHashKey ASC
+    , LoadDate ASC
+  )
 );
