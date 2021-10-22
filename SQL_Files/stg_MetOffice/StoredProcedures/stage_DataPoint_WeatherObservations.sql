@@ -34,6 +34,8 @@ BEGIN
       , [DateKey]
       , [TimeKey]
       , [HashDiff]
+
+      , WeatherObservatoryLocationWeatherObservationHashKey -- Key for the link table
     )
     SELECT
         @LoadDate AS [LoadDate]
@@ -95,6 +97,19 @@ BEGIN
         )
         , 2
       ) AS [HashDiff]
+      , TRY_CONVERT(
+        CHAR(32)
+        , HASHBYTES(
+          'MD5'
+          , CONCAT(
+            ISNULL(TRY_CONVERT(NVARCHAR(255), [LocationID]), 'XX'), '^|^'
+            , ISNULL(TRY_CONVERT(NVARCHAR(255), [LocationID]), 'XX'), '^|^'
+            , ISNULL(TRY_CONVERT(NVARCHAR(255), keys.DateKey), 'XX'), '^|^'
+            , ISNULL(TRY_CONVERT(NVARCHAR(255), keys.TimeKey), 'XX'), '^|^'
+          )
+        )
+        , 2
+      ) AS WeatherObservatoryLocationWeatherObservationHashKey
     FROM
       [lnd_MetOffice].[DataPoint_WeatherObservations]
       CROSS APPLY (
